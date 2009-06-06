@@ -1,0 +1,6 @@
+# -*- muttrc -*-
+
+auto_view text/html
+auto_view application/msword
+auto_view application/rtf
+auto_view application/octet-stream
