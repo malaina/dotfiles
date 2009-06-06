@@ -1,0 +1,11 @@
+#!/bin/sh
+
+for arg in "$@"
+do
+    if [ -n "$DISPLAY" ]; then
+        urxvtc -T "$arg" -n "$arg" -e \
+            screen -AaDROUS "$arg" -c $HOME/.screen/screen."$arg" &>/dev/null
+    else
+        screen -Aa -DR -O -U -S "$arg" -c $HOME/.screen/screen."$arg" &>/dev/null
+    fi
+done
