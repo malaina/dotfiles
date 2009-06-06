@@ -1,0 +1,10 @@
+# -*- muttrc -*-
+
+source $HOME/.mutt/muttoptions
+source $HOME/.mutt/mailcap
+source $HOME/.mutt/pager
+source $HOME/.mutt/binds
+source $HOME/.mutt/headers
+source $HOME/.mutt/colors
+source $HOME/.mutt/send_hooks
+source $HOME/.mutt/profiles/profile.ootput
