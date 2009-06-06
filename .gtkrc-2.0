@@ -1,0 +1,18 @@
+# -- THEME AUTO-WRITTEN DO NOT EDIT
+include "/home/ootput/.themes/Industrial/gtk-2.0/gtkrc"
+
+style "user-font" {
+        font_name = "Droid Sans Mono 8"
+}
+
+widget_class "*" style "user-font"
+
+gtk-font-name="Droid Sans Mono 8"
+
+gtk-icon-theme-name="Tango"
+
+gtk-icon-sizes = "gtk-button=16,16"
+
+include "/home/ootput/.gtkrc.mine"
+
+# -- THEME AUTO-WRITTEN DO NOT EDIT
