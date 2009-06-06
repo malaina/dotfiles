@@ -1,0 +1,9 @@
+# -*- muttrc -*-
+
+set ascii_chars
+set markers=no
+set pager_context=3
+set pager_format="[%4C/%4m] (%S%Z) %%=%N $i %> [%lL]"
+set pager_index_lines=6
+set pager_stop
+set sort=threads
