@@ -1,0 +1,14 @@
+source $HOME/.screenrc
+
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{= dd}%{b}[ %=%{w}%?%-Lw%?%{b}(%{W}%n*%f %t%?(%u)%?%{b})%{w}%?%+Lw%?%?%= %{b}][%{B} %H %{b}]"
+
+screen -t root 0 sudo su -
+screen -t zsh 1 zsh
+screen -t zsh 2 zsh
+screen -t bur.st 3 ssh burst -t scrn
+screen -t mc 8 mc -tdx
+screen -t mp3 9 ncmpcpp
+
+select 0
