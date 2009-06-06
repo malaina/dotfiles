@@ -1,0 +1,44 @@
+# -*- Shell-script -*-
+
+setopt extendedglob
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=5000
+export SAVEHIST=5000
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt NO_BG_NICE
+
+autoload -U compinit
+compinit
+zstyle :compinstall filename "$HOME/.zshrc"
+
+autoload -U incremental-complete-word
+autoload -U predict-on
+zle -N predict-on
+zle -N predict-off
+zle -N incremental-complete-word
+
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+
+autoload -U autocomplete
+autoload -U colors
+autoload -U complist
+autoload -U zargs
+autoload -U zcalc
+autoload -U zmv
+autoload -U promptinit
+promptinit
+
+setopt auto_list auto_menu auto_param_keys auto_param_slash auto_remove_slash
+setopt autopushd pushdignoredups pushdminus pushdsilent pushdtohome
+setopt correct correctall
+setopt extendedglob appendhistory incappendhistory hist_ignore_all_dups \
+    hist_ignore_space hist_reduce_blanks hist_verify
+setopt interactive_comments
+setopt nobeep no_bash_auto_list notify nohup nocheckjobs
+setopt completeinword menu_complete no_alwaystoend
+
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
