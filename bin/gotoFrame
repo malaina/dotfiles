@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if ionflux -e 'return ioncore.current():name()' &>/dev/null ; then
+    case "$@" in
+        prev) ionflux -e 'ioncore.goto_previous()' &>/dev/null ;;
+        *)    ionflux -e "ioncore.lookup_region('$@'):goto()" &>/dev/null ;;
+    esac
+else
+    exit 1
+fi
