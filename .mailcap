@@ -1,0 +1,7 @@
+application/msword; antiword %s; copiousoutput;
+application/octet-stream; antiword %s; copiousoutput;
+application/rtf; unrtf %s | w3m -v -F -I %{charset} -T text/html; needsterminal
+application/rtf; unrtf %s | w3m -I %{charset} -T text/html -dump; copiousoutput
+
+text/html; w3m -v -F -T text/html -I %{charset} %s; nametemplate=%s.html; needsterminal
+text/html; w3m -I %{charset} -T text/html -dump; copiousoutput
