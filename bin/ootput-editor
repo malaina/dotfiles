@@ -1,0 +1,19 @@
+#!/bin/sh
+# based on twb's wrapper from #emacs @ freenode
+
+if ootput-emacsclient --just-eval t &>/dev/null; then
+    exec ootput-emacsclient "$@"
+fi
+
+if ! fuser -s "/tmp/emacs$EUID/server"; then
+    emacs --daemon
+
+    echo >&2 "Starting Emacs server..."
+    timeout=8
+    socket=/tmp/emacs$EUID/server
+    until [ -e "$socket" ] || ((timeout-- < 0))
+    do sleep 1
+    done
+    [ -e "$socket" ] && exec ootput-emacsclient "$@"
+    echo >&2 "Timeout waiting for Emacs server."
+fi
