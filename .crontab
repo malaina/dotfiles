@@ -1,0 +1,3 @@
+@weekly /home/ootput/bin/lbdbfill
+@hourly /usr/bin/offlineimap
+@hourly /usr/bin/mairix
