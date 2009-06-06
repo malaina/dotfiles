@@ -1,0 +1,11 @@
+(set-language-environment "UTF-8")
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+(when (not (string= (getenv "LC_CHARMAP") "UTF-8"))
+    (setenv "LC_CTYPE" "en_AU.UTF-8")
+      (setenv "LC_CHARMAP" "UTF-8"))
