@@ -1,0 +1,10 @@
+#!/bin/sh
+
+shotDATE=$(date +%y%m%d)
+cd $HOME/media/picture/screenshot
+scrot -t 25 -d 3 'ootput-screenshot.png'
+shotURL=$(ompload -u ootput-screenshot.png | cut -d ' ' -f 4)
+thumbURL=$(ompload -u ootput-screenshot-thumb.png | cut -d ' ' -f 4)
+echo "<a href=\"$shotURL\"><img src=\"$thumbURL/ootput-screenshot-thumb.png\"\
+ alt=\"screenshot on $shotDATE\" /></a>" > $HOME/.screenshot.markdown
+cd -
