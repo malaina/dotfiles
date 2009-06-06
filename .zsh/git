@@ -1,0 +1,110 @@
+# -*- Shell-script -*-
+
+export DOTFILE_LOCAL="$HOME/dotfiles"
+export DOTFILE_REMOTE="git@github.com:ootput/dotfiles.git"
+export ROOT_LOCAL="/"
+export ROOT_REMOTE="git@gitbase.com:ootput/configs/root.git"
+
+cbsync() {
+    local CBSYNCDOTFILES="$(cat ~/.private/codeootput)"
+    wget -O - "$CBSYNCDOTFILES" &>/dev/null
+    echo "codebase dotfiles synced"
+}
+
+gitclean() {
+    do_gc()
+    {
+        for REPO in $@; do
+            cd "$REPO" &&
+            git gc --aggressive &&
+            cd -
+        done
+    }
+    do_gc "$DOTFILE_LOCAL" "$ROOT_LOCAL"
+}
+
+gca() {
+    cd "$DOTFILE_LOCAL"
+    git diff --name-only -z HEAD | \
+        xargs -0 -n 1 -I '{}' \
+        git commit --cleanup=default --untracked-files=no --verbose '{}'
+    cd -
+}
+
+gpod() {
+    cd "$DOTFILE_LOCAL"
+    git push origin debian
+    cd -
+}
+
+gitchanges() {
+    git ls-files -d -m -o -z | xargs -0 git-update-index --add --remove
+}
+
+gitpopulate() {
+    cd "$DOTFILE_LOCAL" || { echo "$DOTFILE_LOCAL not found" >&2; exit 1; }
+    git ls-tree --name-only -r HEAD | while IFS='' read -r FILE; do
+        DIR="$HOME/$(dirname "$FILE")"
+        if ! mkdir -p "$DIR"; then
+            echo "Failure creating $DIR" >&2
+            continue
+        fi
+        if [ "$HOME"/"$FILE" = "$DOTFILE_LOCAL" ]; then
+            echo "Not deleting repository $FILE" >&2
+            continue
+        fi
+        rm -rf "$HOME"/"$FILE"
+        ln -s "$DOTFILE_LOCAL"/"$FILE" "$HOME"/"$FILE";
+    done
+    cd -
+}
+
+deploydotfiles() {
+    mkdir -p "$DOTFILE_LOCAL"
+    cd $DOTFILE_LOCAL
+    find . -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+    git init
+    git remote add -f -t debian \
+        origin "$DOTFILE_REMOTE" || return
+    git checkout -t origin/debian
+    cd -
+    gitpopulate
+    ln -s "$DOTFILE_LOCAL/.git" "$HOME/.git"
+}
+
+rgca() {
+    cd "$ROOT_LOCAL"
+    git diff --name-only -z HEAD | \
+        xargs -0 -n 1 -I '{}' \
+        git commit --cleanup=default --untracked-files=no --verbose '{}'
+    cd -
+}
+
+rgpod() {
+    cd "$ROOT_LOCAL"
+    git push origin debian
+    cd -
+}
+
+deployroot() {
+    cd "$ROOT_LOCAL"
+    sudo rm -rf .git || return
+    sudo mkdir -p .git
+    sudo chown $USER:$USER .git
+    git init
+    git remote add -f -t debian \
+        origin "$ROOT_REMOTE" || return
+    sudo mount /boot -o remount,rw
+    sudo git checkout -t origin/debian
+    sudo git ls-tree -l -r HEAD| awk '{print $1, $5}' | while IFS='' read -r FILE; do
+        local perms=${FILE%% *} name=${FILE#* }
+        if [[ "$perms" = 100[0-9][0-9][0-9] ]]; then
+            sudo chmod ${perms[3,-1]} "$name"
+        else
+            echo "permission type '$perms' invalid"
+            continue
+        fi;
+    done
+    sudo chown $USER:$USER .git -R
+    sudo mount /boot -o remount,ro
+}
