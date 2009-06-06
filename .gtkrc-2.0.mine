@@ -1,0 +1,3 @@
+gtk-key-theme-name = "Emacs"
+
+include "/home/ootput/.gtkrc-minimal"
