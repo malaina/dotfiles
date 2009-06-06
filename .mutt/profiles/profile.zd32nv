@@ -1,0 +1,16 @@
+# -*- muttrc -*-
+
+set realname="Joseph LP"
+set from="zd32nv@gmail.com"
+set envelope_from_address= "zd32nv@gmail.com"
+set signature="$HOME/.signature_zd32nv"
+set sendmail="/usr/bin/msmtp -a zd32nv_at_gmail \
+                             --logfile=$HOME/logs/mail/msmtp_zd32nv.log"
+set record = "=INBOX.Sent\ Items.zd32nv"
+set postponed = "=INBOX.Drafts.zd32nv"
+
+unmy_hdr *
+my_hdr From: Joseph LP <zd32nv@gmail.com>
+my_hdr Reply-To: Joseph LP <zd32nv@gmail.com>
+
+set status_format="-%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F?Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b? %?l? %l?]---(%s/%S)-zd32nv-%>-(%P)---"
