@@ -1,0 +1,4 @@
+# -*- Shell-script -*-
+
+[ -z $EDITOR ] && echo 'No suitable editor found.'
+[ -z $PAGER ] && echo 'No suitable pager found.'
