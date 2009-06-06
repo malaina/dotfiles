@@ -1,0 +1,2 @@
+#Triggers file version 1.0
+-publics -nocase -masks 'esonediw!*@*' -regexp '^(.*)' -replace '[ignored]' -name 'esonediw' 
