@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if gotoFrame Code; then
+    if ! screen -ls | grep -q code ; then
+        s-t code
+    fi
+    screen -S code -X select emacs
+    emacsclient "$@"
+    screen -S code -X select irc
+    gotoFrame prev
+else
+    emacsclient -t "$@"
+fi
