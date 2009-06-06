@@ -254,12 +254,13 @@ windows = {
         type = "CHANNEL";
         chat_type = "IRC";
         name = "&bitlbee";
-        tag = "localhost";
+        tag = "bitlbee";
       }
     );
   };
 };
 mainwindows = {
-  1 = { first_line = "6"; lines = "23"; };
+  7 = { first_line = "6"; lines = "24"; };
   2 = { first_line = "0"; lines = "6"; };
 };
+keyboard = ( { key = "^D"; id = "command"; data = "quit "; } );
