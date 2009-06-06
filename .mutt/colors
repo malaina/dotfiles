@@ -1,0 +1,32 @@
+# -*- muttrc -*-
+
+color body       cyan         default   (http|ftp)://[_a-zA-Z0-9\./~\-]+
+color hdrdefault green        default
+color quoted     yellow       default
+color signature  brightblack  default
+color indicator  brightcyan   default
+color attachment magenta      default
+color error      red          default
+color message    blue         default
+color search     magenta      default
+color status     blue         default
+color tree       yellow       default
+color normal     white        default
+color tilde      green        default
+color bold       brightyellow default
+color markers    red          default
+
+color body       green        default     "^gpg: Good signature from"
+color body       brightred    default     "^gpg: Bad signature from"
+color body       brightred    default     "^gpg: BAD signature from"
+color body       brightred    default     "^gpg: Note: This key has expired!"
+color body       brightyellow default     "^gpg: WARNING: This key is not certified with a trusted signature"
+color body       brightyellow default     "^gpg:          No indication that the signature belongs to the owner."
+color body       brightyellow default     "^gpg: can't handle these multiple signatures"
+color body       brightyellow default     "^gpg: signature verification suppressed"
+color body       brightyellow default     "^gpg: invalid node with packet of type"
+
+color index     cyan          default   '~n -0'
+color index     green         default   '~n 1-9'
+color index     white         default   '~n 10-19'
+color index     brightyellow  default   '~n 20-'
