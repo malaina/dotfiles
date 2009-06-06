@@ -1,0 +1,55 @@
+# -*- muttrc -*-
+
+macro generic <f1> "!w3m /usr/share/doc/mutt/html/manual.html\n" \
+                   "Show Mutt documentation"
+
+bind  pager   p    previous-undeleted
+bind  pager   n    next-undeleted
+bind  pager   \cp  previous-line
+bind  pager   \cn  next-line
+bind  pager   \cb  exit
+bind  pager   \cf  view-attachments
+bind  attach  \cb  exit
+bind  attach  \cf  view-attach
+bind  index   \cp  previous-entry
+bind  index   \cn  next-entry
+bind  index   \cf  display-message
+macro index   \cb  "\cx\cb"
+bind  browser \cp  previous-entry
+bind  browser \cn  next-entry
+bind  browser \cf  select-entry
+macro browser \cb  "<exit><exit>"
+
+macro pager \cu <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+macro index <F10> ":source $HOME/.mutt/profiles/profile.jlephan\n" \
+                  "Load profile:jlephan"
+macro index <F11> ":source $HOME/.mutt/profiles/profile.ootput\n" \
+                  "Load profile:ootput"
+macro index <F12> ":source $HOME/.mutt/profiles/profile.zd32nv\n" \
+                  "Load profile:zd32nv"
+
+macro browser a ":unmailboxes *<enter>:mailboxes \`newmail -am\`<enter><check-new>"\
+                "show all mailboxes"
+macro browser n ":mailboxes *<enter>:mailboxes \`newmail -m\`<enter><check-new>"\
+                "show only mailboxes containing new mail"
+
+macro index   \eb 'c=search'<enter><shell-escape>'mairix ' \
+                  'Enter Mairix search term'
+macro pager   \eb 'c=search'<enter><shell-escape>'mairix ' \
+                  'Enter Mairix search term'
+macro browser \eb 'c=search'<enter><shell-escape>'mairix ' \
+                  'Enter Mairix search term'
+
+macro index "\cx\cb" "<sync-mailbox><change-folder>?<toggle-mailboxes>" \
+                     "open a different folder"
+macro pager "\cx\cb" "<sync-mailbox><change-folder>?<toggle-mailboxes>" \
+                     "open a different folder"
+
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+bind index s decrypt-save
+bind pager s decrypt-save
+
+folder-hook . 'macro index d "<save-message>=INBOX.Trash<enter>"'
+folder-hook =INBOX.Trash 'macro index d <delete-message>'
