@@ -1,0 +1,22 @@
+[general]
+accounts = imap.cc
+ui = Noninteractive.Quiet
+
+[Account imap.cc]
+localrepository = mylocal
+remoterepository = myremote
+
+[Repository mylocal]
+type = IMAP
+preauthtunnel = /usr/sbin/dovecot --exec-mail imap
+remotehost = localhost
+port = 143
+remoteuser = ootput
+
+[Repository myremote]
+type = IMAP
+remotehost = mail.messagingengine.com
+ssl = yes
+remoteuser = jlephan@imap.cc
+
+expunge = no
