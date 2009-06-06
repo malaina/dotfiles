@@ -1,0 +1,5 @@
+base=$HOME/Maildir
+maildir=.:.INBOX.*
+omit=.INBOX.Junk*
+mfolder=search
+database=$HOME/Maildir/.mairix_database
