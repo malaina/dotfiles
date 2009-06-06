@@ -1,0 +1,16 @@
+# -*- muttrc -*-
+
+ignore delivered-to
+ignore content- errors-to in-reply-to mime-version
+ignore lines precedence status
+ignore nntp-posting-host path old-return-path received references
+ignore priority >received >>received
+ignore resent- return-path xref path
+ignore x400 importance sensitivity autoforward original-encoded-information
+ignore x- thread-
+ignore DomainKey-Signature
+ignore list- comments posted-to approved-by
+unignore x-spam-level x-url x-mailer list-id x-no-spam x-archived-at
+unignore x-diagnostic
+
+hdr_order from to cc date subject reply-to mail-followup-to list-id
