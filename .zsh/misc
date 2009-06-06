@@ -1,0 +1,7 @@
+# -*- Shell-script -*-
+
+test -t 0 && stty -ixon -ixoff # use stty before starting screen
+
+if test "$TERM" = "rxvt-unicode"; then
+    sleep 0.1 && clear
+fi
