@@ -1,0 +1,36 @@
+/********************************/
+/* Firefox 1.5 userContent.css  */
+/*                              */
+/*   for use with all themes    */
+/*                              */
+/*          by Grypen           */
+/********************************/
+
+/* http://www.users.on.net/~grypen/Downloads/?C=M%3BO=D */
+
+/*
+ * This file can be used to apply a style to all web pages you view
+ * Rules without !important are overruled by author rules if the
+ * author sets any.  Rules with !important overrule author rules.
+ */
+
+/* Disable blinking text and marquees */
+blink { text-decoration: none !important; }
+marquee { -moz-binding: none !important; }
+
+/* Change cursor for links that open in new window */
+:link[target="_blank"],
+:visited[target="_blank"],
+:link[target="_new_window"],
+:visited[target="_new_window"],
+:link[target="_new"],
+:visited[target="_new"],
+:link[target=new],
+:visited[target=new] {
+   cursor: crosshair !important;
+}
+
+/* Change cursor for JavaScript links
+a[href^="javascript:"] {
+   cursor: crosshair !important;
+} */
