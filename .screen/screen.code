@@ -1,0 +1,4 @@
+source $HOME/.screenrc
+
+screen -t emacs 0 emacsclient -t
+screen -t irc 9 irssi
