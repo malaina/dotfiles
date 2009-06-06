@@ -1,0 +1,20 @@
+[user]
+        email = ootput@gmail.com
+        name = Joseph LP
+[color]
+        branch = auto
+        diff = auto
+        status = auto
+        ui = auto
+[pack]
+        threads = 0
+[alias]
+        br = branch
+        ci = commit
+        co = checkout
+        di = diff
+        llog = log --pretty=oneline --abbrev-commit
+        st = status
+        sta = stash
+[core]
+        editor = emac
