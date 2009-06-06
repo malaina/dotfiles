@@ -1,0 +1,4 @@
+source $HOME/.screenrc
+
+chdir $HOME/dl/torrents/sources
+screen -t torrent 0 rtorrent -o http_capath=/etc/ssl/certs
