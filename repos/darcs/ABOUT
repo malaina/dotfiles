@@ -1,0 +1,4 @@
+darcs get --lazy http://modeemi.fi/~tuomov/repos/ion-3plus/
+darcs get --lazy http://modeemi.fi/~tuomov/repos/libextl-3/
+darcs get --lazy http://modeemi.fi/~tuomov/repos/libtu-3/
+darcs get http://iki.fi/tuomov/repos/ion-scripts-3/
