@@ -1,0 +1,248 @@
+/*******************************/
+/* Firefox 2.0 userChrome.css  */
+/*                             */
+/*   for use with Qute 3.2     */
+/*                             */
+/*         by Grypen           */
+/*******************************/
+
+/*
+ * http://www.users.on.net/~grypen/Downloads/?C=M%3BO=D
+ */
+
+/*
+ * Do not remove the @namespace line -- it's required for correct functioning
+ */
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
+
+/* =============== Testing Area ================== */
+
+
+
+/* Useful additions to show which element is being worked on
+-moz-appearance: none !important;
+background-color: red !important;
+border-color: red !important;
+border-style: dashed !important;
+*/
+
+/* ============= Testing Area End ================ */
+
+/* ============= Hide UI Elements ================ */
+
+/* Combined Stop-Reload Button (must swap order of buttons for this to work properly) */
+#stop-button[disabled="true"] {display:none !important;}
+#stop-button:not([disabled]) + #reload-button {display:none !important;}
+
+/* Hide the throbber and its annoying movement */
+#throbber-box {
+   display: none !important;
+}
+
+/* Hide loading progress bar in status bar */
+#statusbar-progresspanel {
+   display: none !important;
+}
+
+/* Hide selected browser menus */
+   /* menu[label="Edit"],      /* Hide Edit menu */
+   /* menu[label="View"],      /* Hide View menu */
+   menu[label="History"],      /* Hide History menu */
+   /* menu[label="Bookmarks"], /* Hide Bookmarks menu */
+   /* menu[label="Tools"],     /* Hide Tools menu */
+   menu[label="Help"]          /* Hide Help menu */ {
+   display: none !important;
+}
+
+/* Hide tab icons */
+.tab-icon {
+   display: none !important;
+}
+
+/* Hide Favicon placeholder in URL bar */
+#page-proxy-deck {
+   display: none !important;
+}
+
+/* Hide Go and Search Buttons */
+#go-button-stack, .search-go-button-stack {
+  display: none !important;
+}
+
+/* ============= Hide UI Elements End ================ */
+
+/* ============= UI Appearance Tweaks ================ */
+
+/* Tab Style */
+
+.tabbrowser-tab > .tab-image-middle,
+.tabbrowser-tab > .tab-close-button
+{
+background: none !important;
+}
+
+.tabbrowser-tab > .tab-image-left,
+.tabbrowser-tab > .tab-image-right
+{
+background: none !important;
+width: 0px !important;
+height: 0px !important;
+}
+
+.tabbrowser-tabs tab
+{
+-moz-appearance: tab !important;
+-moz-box-sizing: border-box !important;
+margin-top: 0px !important;
+min-height: 21px !important;
+padding: 0px !important;
+}
+
+.tabbrowser-tabs tab[selected="true"]
+{
+margin-top: 0px !important;
+min-height: 21px !important;
+}
+
+/* Hides dotted line when click to focus tab */
+.tabbrowser-tab:focus > .tab-image-middle > .tab-text {
+border: 1px dotted transparent !important;
+}
+
+/* Progress Meter - cancel default progress bar appearance */
+tabbrowser tab progressmeter {
+   -moz-appearance: none !important;
+}
+
+/* Progress Meter - change active tab progress bar color
+tabbrowser tab[selected="true"] .progress-bar {
+   -moz-appearance: none !important;
+   background-color: rgb(147,182,223) !important;
+} */
+
+/* Progress Meter - change background tab progress bar color */
+tabbrowser tab:not([selected="true"]) .progress-bar {
+   -moz-appearance: none !important;
+   background-color: rgb(127,144,177) !important;
+}
+
+/* Change color of active tab */
+.tabbrowser-tab > hbox[selected="true"] {
+   background-color: rgb(222,218,210) !important;
+   color: black !important;
+}
+
+/* Change color of background tabs */
+.tabbrowser-tab > hbox:not([selected="true"]) {
+   background-color: rgb(200,196,188) !important;
+   color: gray !important;
+}
+
+/* Tab text colour while loading */
+tab[busy] .tab-text {
+   color: rgb(255,255,255) !important;
+}
+
+/* Proxomitron error tab - text colour change */
+.tab-text[value="The Proxomitron Reveals..."] {
+   color: rgb(255,0,0) !important;
+}
+
+/* Proxomitron 404 tab - text colour change */
+.tab-text[value="404 Not Found"] {
+   color: rgb(92,144,92) !important;
+}
+
+/* Proxomitron kill tab - text colour change */
+.tab-text[value="Connection killed by Proxomitron!"] {
+   color: rgb(255,0,0) !important;
+}
+
+/* ============ UI Appearance Tweaks End ============== */
+
+/* ========= UI size reduction customisations ========= */
+
+menubar, toolbox, toolbar, .tabbrowser-tabs {
+   background-image: none !important;
+   background-color: none !important;
+   }
+
+/* Top toolbar */
+toolbar {
+   border: 0px !important;
+   padding: 0px !important;
+}
+
+/* Content area (encompasses tab bar) */
+#content {
+   border: 0px !important;
+   padding: 0px !important;
+}
+
+/* Individual tab size  */
+tab {
+   margin-top: 0px !important;
+   margin-bottom: 0px !important;
+   margin-left: 0px !important;
+   margin-right: 0px !important;
+   border-top: -2px !important;
+   border-bottom: -2px !important;
+   height: 22px !important;
+}
+
+/* Display the tabbar at the bottom */
+#content > tabbox { -moz-box-direction: reverse; }
+
+/* Active tab inner content area */
+#content > tabbox tab[selected="true"] {
+   padding: -2px 1px 1px 1px !important;
+}
+
+/* Background tab inner content area */
+#content > tabbox tab:not([selected="true"]) {
+   padding: -2px 1px 1px 1px !important;
+}
+
+/* Text menus */
+menubar > menu {
+   margin-left: -2px !important;
+   margin-right: -2px !important;
+}
+
+/* Toolbar buttons (and close tab button) global size and padding */
+toolbarbutton {
+   padding: 0px 4px 0px 4px !important;
+}
+
+/* URL entry box
+#urlbar {
+   margin-top: 0px !important;
+   margin-bottom: 0px !important;
+   margin-right: 0px !important;
+   margin-left: 0px !important;
+}
+ */
+/* Make the Search box wider */
+#search-container, #searchbar {
+   width: 300px !important;
+}
+
+/* Remove arrow in the Search bar and correct icon position
+.search-proxy-button-dropmarker {display:none !important;}
+.searchbar-dropmarker-image {display: none !important;} */
+
+/* Find Bar Text Box Width */
+#find-field {
+   width: 350px !important;
+}
+
+/* Remove Close Tab button whitespace to shrink tab bar height */
+#content .tabs-closebutton {
+   margin-top: -2px !important;
+   margin-bottom: -1px !important;
+   margin-right: -2px !important;
+   margin-left: 0px !important;
+   padding: 0px 0px 0px 2px !important;
+}
+
+/* ======= UI size reduction customisations End ======== */
