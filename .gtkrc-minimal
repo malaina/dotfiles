@@ -1,0 +1,31 @@
+style "my_minimal"
+{
+        GtkButton::default_border            =	{ 0, 0, 0, 0 }
+        GtkButton::default_outside_border    =	{ 0, 0, 0, 0 }
+        GtkButtonBox::child_min_width        =	0
+        GtkButtonBox::child_min_heigth       =	0
+        GtkButtonBox::child_internal_pad_x   =	0
+        GtkButtonBox::child_internal_pad_y   =	0
+
+        GtkMenu::vertical-padding            =	0
+        GtkMenuBar::internal_padding         =	0
+        GtkMenuItem::horizontal_padding      =	0
+
+        GtkOptionMenu::indicator_size        =	0
+        GtkOptionMenu::indicator_spacing     =	0
+
+        GtkPaned::handle_size                =	2
+        GtkRange::trough_border              =	0
+        GtkRange::stepper_spacing            =	0
+        GtkScale::value_spacing              =	0
+        GtkScrolledWindow::scrollbar_spacing =	0
+        GtkExpander::expander_size           =	4
+        GtkExpander::expander_spacing        =	0
+        GtkTreeView::vertical_separator      =	0
+        GtkTreeView::horizontal_separator    =	0
+        GtkWidget::focus_padding             =	0
+}
+
+class "GtkWidget" style "my_minimal"
+
+gtk-icon-sizes = "gtk-large-toolbar=16,16:panel-menu=16,16:gtk-button=16,16:gtk-dialog=16,16:gtk-menu=16,16"
