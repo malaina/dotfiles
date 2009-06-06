@@ -1,0 +1,16 @@
+# -*- debian-control -*-
+Priority: optional
+Standards-Version: 3.8.0
+
+Package: emacs
+Depends: emacs-snapshot | emacs-snapshot-nox
+Provides: news-reader, mail-reader, info-browser, emacsen, editor
+Version: 23~CVS
+Homepage: http://bugs.debian.org/506106
+Description: The GNU Emacs editor (metapackage)
+ GNU Emacs is the extensible self-documenting text editor. This is a
+ metapackage which will always depend on the latest Emacs release.
+ .
+ This package exists to allow w3m-el-snapshot to be used with
+ emacs-snapshot.  w3m-el-snapshot depends on "emacs" instead of
+ "emacsen" because it is not compatible with a flavour of xemacs.
