@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xset s off -dpms
+mplayer -stop-xscreensaver -vo xv -fs -ao alsa:device=hw=Intel.0 "$@"
+xset s on -dpms
