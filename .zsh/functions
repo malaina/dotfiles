@@ -1,0 +1,97 @@
+# -*- Shell-script -*-
+
+dict() {
+    command dict "$@" | $PAGER
+}
+
+extract() {
+    file=$1
+    if [ -f "$file" ] ; then
+        case "$file" in
+            *.tar.bz2)      tar xjvf "$file"     ;;
+            *.tar.bz)       tar xjvf "$file"     ;;
+            *.tar.gz)       tar xvzf "$file"     ;;
+            *.bz2)          bunzip2 "$file"      ;;
+            *.rar)          rar x "$file"        ;;
+            *.gz)           gunzip "$file"       ;;
+            *.tar)          tar xvf "$file"      ;;
+            *.zip)          unzip "$file"        ;;
+            *.Z)            uncompress "$file"   ;;
+            *)              echo "'$file' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$file' is not a valid file"
+    fi
+}
+
+findbroken() {
+    find . -type l | \
+        (while read SYMLINK ; do test -e "$SYMLINK" || ls -ld "$SYMLINK"; done)
+}
+
+llm() {
+    ls --color -alh "$@" | most
+}
+
+mplayaw() {
+    xset s off -dpms
+    mplayer -stop-xscreensaver -vo x11 -ao alsa:device=default "$@"
+    xset s on -dpms
+}
+
+mplaynw() {
+    xset s off -dpms
+    mplayer -stop-xscreensaver -vo x11 -ao alsa:device=hw=Intel.0 "$@"
+    xset s on -dpms
+}
+
+nocomment() {
+    egrep -a -v '^[[:space:]]*#' $1 | egrep -a '[[:print:]]'
+}
+
+nopaste() {
+    echo "\nFormat of paste?\n"
+    select syntax in bash c cpp lisp html java javascript lua perl php python ruby ; do
+        [ $syntax ] && break
+    done
+    echo
+
+    case "$1" in
+        -) echo "====== Begin pasting. ^D to finish ======"
+            pastebinit -a luser -f "$syntax" - ;;
+        *) pastebinit -a luser -f "$syntax" -i "$1" ;;
+    esac
+}
+
+prepend() {
+    file=$1
+    text=$(cat)
+    exec 3<> "$file" && awk -v TEXT="$text" 'BEGIN {print TEXT}{print}' "$file" >&3
+}
+
+purge() {
+    FILES=(*~(N) .*~(N) \#*\#(N) *.o(N) a.out(N) *.core(N)
+        *.cmo(N) *.cmi(N) .*.swp(N))
+    NBFILES=${#FILES}
+    if [[ $NBFILES > 0 ]]; then
+        print $FILES
+        local ans
+        echo -n "Remove the file(s)? [y/n] "
+        read -q ans
+        if [[ $ans == "y" ]]
+        then
+            rm -f $FILES
+            echo ">> $PWD purged, $NBFILES files removed"
+        else
+            echo "Ok. .. than not.."
+        fi
+    fi
+}
+
+renlower() {
+    for file in *; do mv $file ${file:l}; done
+}
+
+renspace() {
+    for file in ./**/*\ *(Dod); do mv $file ${file:h}/${file:t:gs/ /_}; done
+}
