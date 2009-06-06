@@ -1,0 +1,16 @@
+# -*- muttrc -*-
+
+set realname="Joseph LP"
+set from="ootput@gmail.com"
+set envelope_from_address= "ootput@gmail.com"
+set signature="$HOME/.signature_ootput"
+set sendmail="/usr/bin/msmtp -a ootput_at_gmail \
+                             --logfile=$HOME/logs/mail/msmtp_ootput.log"
+set record = "=INBOX.Sent\ Items.ootput"
+set postponed = "=INBOX.Drafts.ootput"
+
+unmy_hdr *
+my_hdr From: Joseph LP <ootput@gmail.com>
+my_hdr Reply-To: Joseph LP <ootput@gmail.com>
+
+set status_format="-%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F?Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b? %?l? %l?]---(%s/%S)-ootput-%>-(%P)---"
