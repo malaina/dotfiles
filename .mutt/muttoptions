@@ -1,0 +1,67 @@
+# -*- muttrc -*-
+
+set folder = "imap://ootput@localhost/"
+set spoolfile = "imap://ootput@localhost"
+set tunnel = "/usr/sbin/dovecot --exec-mail imap"
+
+set mask="!^\\.[^.]"
+mailboxes ! + `shopt -s extglob; \
+for file in $HOME/Maildir/.INBOX*; do \
+    box="${file##*/}"; \
+    case "$box" in \
+        .|..|.customflags|.subscriptions) :;; \
+                                       *) printf " '+${box##*(.)}'";; \
+    esac; \
+done`
+
+set abort_nosubject=no
+set attach_split
+set bounce_delivered
+set charset="utf-8"
+set confirmappend
+set delete
+set display_filter="t-prot -cemktS --bigq --pgp-move-vrf --pgp-short -Mmutt"
+set edit_headers=yes
+set editor="emac"
+set fast_reply
+set fcc_clear=yes
+set folder_format="%2C %t %N %8s %d %f"
+set followup_to
+set hdr_format="%4C %Z %{%m/%d} %-15.15F (%4c) %s"
+set header_cache=$HOME/.muttcache
+set help
+set imap_check_subscribed
+set include=yes
+set index_format="%4C %Z %{%b %d} %-15.15F (%4c) %s"
+set mail_check=60
+set maildir_trash=yes
+set move=no
+set message_cachedir=$HOME/.muttcache
+set narrow_tree
+set pager_format="-%?H?SC:%H?- %C/%m: %-20.20n %s"
+set pager_stop
+set query_command="lbdbq '%s'"
+set quote_regexp="^([ \t]*[|>:}#])+"
+set reverse_name=yes
+set reverse_realname=no
+set send_charset="utf-8"
+set smart_wrap
+set sort=threads
+set sort_aux=last-date
+set tilde
+set timeout=800
+set uncollapse_jump
+set use_envelope_from=yes
+set use_from=yes
+set wait_key=no
+set wrapmargin=10
+unset arrow_cursor
+unset askbcc
+unset askcc
+unset beep
+unset beep_new
+unset collapse_unread
+unset imap_passive
+unset mark_old
+unset markers
+unset menu_scroll
