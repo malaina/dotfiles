@@ -1,0 +1,9 @@
+set show-rev-graph = yes
+set line-number-interval = 5
+set tab-size = 2
+set commit-encoding = "UTF-8"
+
+color cursor      red   default underline
+color title-blur  white blue
+color title-focus white blue    bold
+color status      blue  default bold
