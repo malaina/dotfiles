@@ -1,0 +1,43 @@
+download_rate = 1
+upload_rate = 1
+directory = /media/maxtor-250G/[dl]/torrents/incoming
+session = /media/maxtor-250G/[dl]/torrents/.session
+
+system.method.set_key = event.download.opened,link1,"create_link=tied,,.started"
+system.method.set_key = event.download.paused,link1,"delete_link=tied,,.started;create_link=tied,,.paused"
+system.method.set_key = event.download.closed,link1,"delete_link=tied,,.started;delete_link=tied,,.paused;create_link=tied,,.closed"
+system.method.set_key = event.download.resumed,link1,"delete_link=tied,,.paused;delete_link=tied,,.closed;create_link=tied,,.started"
+system.method.set_key = event.download.finished,link1,"create_link=tied,,.finished"
+system.method.set_key = event.download.erased,link1,"delete_link=tied,,.finished"
+
+schedule = watch_directory,10,10,load=/media/maxtor-250G/[dl]/torrents/sources/*.torrent
+schedule = tied_directory,10,10,start_tied=
+schedule = untied_directory,10,10,stop_untied=
+
+schedule = throttle_1,00:00:00,24:00:00,download_rate=0
+schedule = throttle_2,00:00:00,24:00:00,upload_rate=15
+schedule = throttle_3,12:00:00,24:00:00,download_rate=1
+schedule = throttle_4,12:00:00,24:00:00,upload_rate=1
+
+schedule = low_diskspace,5,60,close_low_diskspace=100M
+
+system.method.set_key = event.download.finished,check_custom1,"branch=d.get_custom1=,d.set_custom2=$d.get_custom1=,d.set_custom2=/media/maxtor-250G/[dl]/torrents/done/"
+system.method.set_key = event.download.finished,move_complete,"d.set_directory=$d.get_custom2= ;execute=mv,-u,$d.get_base_path=,$d.get_custom2="
+
+ratio.enable=
+ratio.min.set=1
+ratio.max.set=2
+ratio.upload.set=1M
+
+port_range = 55000-55000
+port_random = no
+check_hash = yes
+enable_trackers = yes
+use_udp_trackers = yes
+
+peer_exchange = yes
+encryption = allow_incoming,try_outgoing,enable_retry
+safe_sync = yes
+
+dht = auto
+dht_port = 55001
