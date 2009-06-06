@@ -1,0 +1,6 @@
+# -*- Shell-script -*-
+
+keychain --nogui --quick --quiet id_dsa 822B0DFC
+[ -z "$HOSTNAME" ] && HOSTNAME=$(uname -n)
+[ -f $HOME/.keychain/$HOSTNAME-sh ] && . $HOME/.keychain/$HOSTNAME-sh
+[ -f $HOME/.keychain/$HOSTNAME-sh-gpg ] && . $HOME/.keychain/$HOSTNAME-sh-gpg
