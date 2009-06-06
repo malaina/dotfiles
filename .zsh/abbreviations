@@ -1,0 +1,36 @@
+# -*- Shell-script -*-
+
+typeset -Ag abbreviations
+abbreviations=(
+    "Il"    "| less"
+    "Im"    "| $PAGER"
+    "It"    "| tail"
+    "Is"    "| sort"
+    "Iw"    "| wc"
+    "stowc" "CHOST='$CHOST' CXXFLAGS='$CXXFLAGS' CFLAGS='$CFLAGS' MAKEOPTS='$MAKEOPTS' ./configure --prefix=$HOME/local/stow/"
+    "gl" 'git ls-tree --name-only -r HEAD'
+    "gg" "GIT_DIR=$DOTFILE_LOCAL/.git GIT_WORK_TREE=$DOTFILE_LOCAL git"
+)
+
+magic-abbrev-expand() {
+    local MATCH
+    LBUFFER=${LBUFFER%%(#m)[_a-zA-Z0-9]#}
+    LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
+    zle self-insert
+}
+
+no-magic-abbrev-expand() {
+    LBUFFER+=' '
+}
+zle -N magic-abbrev-expand
+zle -N no-magic-abbrev-expand
+bindkey " " magic-abbrev-expand
+bindkey "^x " no-magic-abbrev-expand
+
+hash -d stow=$HOME/local/stow
+hash -d git=$HOME/repos/git
+hash -d darcs=$HOME/repos/darcs
+hash -d scratch=$HOME/scratch
+hash -d firefox=$HOME/.mozilla/firefox/profile.ootput
+hash -d browser=$HOME/dl/browser
+hash -d sources=$HOME/dl/torrents/sources
