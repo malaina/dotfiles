@@ -1,0 +1,9 @@
+username = ootput
+password = ***
+host = localhost
+port = 6600
+log = /home/ootput/logs/mpd/mpdscribble.log
+cache = /home/ootput/.mpdscribble/mpdscribble.cache
+verbose = 2
+sleep = 1
+musicdir = /media/seagate-1.5T/audio/music/
