@@ -1,0 +1,4 @@
+machine mail.optusnet.com.au login *** password ***
+machine smtp.gmail.com login zd32nv@gmail.com password ***
+machine smtp.gmail.com login ootput@gmail.com password ***
+machine mail.messagingengine.com login jlephan@imap.cc password ***
