@@ -1,0 +1,57 @@
+startup_message off
+
+vbell on
+vbell_msg "[[[ dong ]]]"
+activity "active: %n (%t) [%w:%s]"
+bell "bell: %n (%t) [%w:%s]^G"
+msgminwait 0
+msgwait 1
+defscrollback 10000
+autodetach on
+deflogin on
+defflow off
+nethack on
+defutf8 on
+altscreen on
+defbce on
+nonblock on
+sorendition =s Yk
+defhstatus "screen: ^En (^Et)"
+term screen-256color
+terminfo rxvt* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm*|rxvt-* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm*|rxvt-* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+termcapinfo xterm*|rxvt-* ti@:te=\E[3J
+termcapinfo xterm*|rxvt-* hs@:cs=\E[%i%d;%dr:im=\E[4h:ei=\E[4l
+termcapinfo xterm*|rxvt-* hs@:cs=\E[%i%p1%d;%p2%dr:im=\E[4h:ei=\E[4l
+
+attrcolor b ".I"
+
+bindkey -m ^[w eval "stuff ' '" writebuf "exec sh -c 'xsel < /tmp/screen-exchange'"
+
+# from: ryan.barret.name/dotfiles/screenrc
+#-----
+# emacs keybindings for navigation in copy mode
+markkeys ^B=Y:^F=V:h=^B:l=^F:0=^A:$=^E
+
+# C-g and other keys quit copy mode. Esc does nothing.
+markkeys \033=\015=^G=^D=h=j=k=l=H=M=L=G=g=y=c=v=a=x=b=e=B=E=w
+markkeys @=\033
+
+# special hack for C-e, since it should go *past* the last char.
+# (-m means this is for copy mode only.)
+bindkey -m ^e stuff "\$^f"
+
+# page up and page down
+bindkey -m -k kP stuff Y
+bindkey -m -k kN stuff V
+
+# C-space sets mark.
+markkeys ' '=^@
+
+# control arrows move by words. (set B, e, and w to F keys so that i can use
+# them to move by words, but they themselves still quit copy mode.)
+markkeys B=[:E=]:b={:e=}:w=>
+bindkey -m ^[Od stuff {  #"[[}"
+bindkey -m ^[Oc stuff ]  #"}]^f"
+#-----
