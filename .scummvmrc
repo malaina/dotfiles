@@ -1,0 +1,23 @@
+[sky]
+gameid=sky
+description=Beneath a Steel Sky (v0.0372 cd)
+path=/media/seagate-1.5T/games/roms/scumm/Beneath A Steel Sky/bass-cd-1.2
+
+[tentacle]
+gameid=tentacle
+description=Day of the Tentacle (CD/English)
+language=en
+path=/media/seagate-1.5T/games/roms/scumm/Day Of The Tenticle/DOTT
+
+[monkey-vga]
+platform=pc
+gameid=monkey
+description=The Secret of Monkey Island (VGA/DOS/English)
+language=en
+path=/media/seagate-1.5T/games/roms/scumm/Monkey Island
+
+[scummvm]
+lastselectedgame=monkey-vga
+browser_lastpath=/media/seagate-1.5T/games/roms/scumm
+versioninfo=0.13.0
+
