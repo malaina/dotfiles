@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo updating "$(whoami)"\'s crontab
+crontab -l > $HOME/.crontab &>/dev/null
