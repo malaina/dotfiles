@@ -1,0 +1,7 @@
+#!/bin/sh
+
+aptitude search -F%p '~i!~M'| while read PACKAGE; do
+    dpkg -L "$PACKAGE" | while IFS='' read -r FILE; do
+        sudo [ -e "$FILE" ] || printf "$FILE missing from $PACKAGE.\n"
+    done
+done
