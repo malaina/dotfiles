@@ -1,0 +1,28 @@
+#!/bin/sh
+
+for dest in package_missing package_diff_brief \
+    package_diff_detailed package_same ; do
+    cp /dev/null $HOME/"$dest"
+done
+
+cd /tmp
+apt-show-versions -a > aptinstalled
+
+dpkg --get-selections | while read package _; do
+    grep "$package " aptinstalled > packagematch
+
+    sidver="$(awk '$1 ~ /^'"$package"'/ && /installed/ {print $2}' packagematch)"
+    testver="$(awk '$1 ~ /^'"$package"'/ && /testing/ {print $2}' packagematch)"
+
+    if [ "$testver" == "" ] ; then
+        echo "$package" >> ~/package_missing
+    elif [ "$sidver" != "$testver" ] ; then
+        echo "Package '$package': sid has '$sidver'; testing has '$testver'" \
+            >> ~/package_diff_detailed
+        echo "$package" >> ~/package_diff_brief
+    else
+        echo "$package" >> ~/package_same
+    fi
+done
+rm -rf aptinstalled packagematch
+cd - >/dev/null
