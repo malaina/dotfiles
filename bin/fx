@@ -1,0 +1,4 @@
+#!/bin/sh
+
+firefox -new-tab "http://${1#http://}"
+gotoFrame Browser
