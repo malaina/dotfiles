@@ -1,0 +1,41 @@
+# -*- Shell-script -*-
+
+alias rm='rm -iv'
+alias cp='cp -iv'
+alias mv='mv -iv'
+
+alias mkdir='nocorrect noglob mkdir'
+alias touch='nocorrect noglob touch'
+
+alias nets='netstat -tuvnap'
+alias e="$EDITOR"
+alias df='df -T --si -xtmpfs -xusbfs'
+alias grep='egrep -i --color=auto'
+alias iptraf="env TERM=ansi77 sudo iptraf -i eth0 -L $HOME/logs/net/iptraf.log"
+alias ll='ls --color -a -lh'
+alias ls='ls --color'
+alias mpda='mpc disable 1 > /dev/null 2>&1 ; mpc enable 2'
+alias mpdn='mpc disable 2 > /dev/null 2>&1 ; mpc enable 1'
+alias mutt='mutt -y'
+alias newsbeuter='TERM=xterm newsbeuter'
+alias screen='screen -Aa -U -O'
+alias s-s='$(grep sudo $HOME/.screen/screen.shells)'
+alias stow='xstow -d $HOME/local/stow'
+alias unstow='xstow -d $HOME/local/stow -D'
+alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
+alias winxp='QEMU_AUDIO_DRV=alsa kvm -hda $HOME/kvm_images/windowsxp.img -smp 2 -m 1024 -smb qemu -k en-us -usb -usbdevice tablet -soundhw es1370 -localtime >>$HOME/logs/kvmxp.log 2>&1'
+
+alias etodo='prepend $HOME/todo.org'
+alias enotes='prepend $HOME/notes.org'
+alias vtodo='most $HOME/todo.org'
+alias vnotes='most $HOME/notes.org'
+
+alias apt-autoremove='apt-get autoremove'
+alias apt-install='apt-get install'
+alias apt-remove='apt-get remove'
+alias apt-update='apt-get update'
+alias apt-upgrade='apt-get upgrade'
+alias apt-purge='apt-get purge'
+alias apt-search='apt-cache search'
+
+alias socatirc='socat -d -d -d -lf $HOME/logs/socat.log TCP4-LISTEN:4244,fork SOCKS4A:localhost:5t7o4shdbhotfuzp.onion:6667,socksport=9050 2>&1'
