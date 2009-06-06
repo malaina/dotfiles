@@ -1,0 +1,11 @@
+# -*- muttrc -*-
+
+send-hook (mutt-users)$ \
+        "source $HOME/.mutt/profiles/profile.ootput\n"
+
+folder-hook .                    source $HOME/.mutt/profiles/profile.jlephan
+
+folder-hook =INBOX.Inbox_ootput  source $HOME/.mutt/profiles/profile.ootput
+folder-hook =INBOX.Opensource    source $HOME/.mutt/profiles/profile.ootput
+
+folder-hook =INBOX.Inbox_zd32nv  source $HOME/.mutt/profiles/profile.zd32nv
