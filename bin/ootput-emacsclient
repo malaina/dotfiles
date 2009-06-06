@@ -1,0 +1,35 @@
+#!/bin/sh
+# based on twb's wrapper from #emacs @ freenode
+
+unset just_eval
+if [ "$1" = --just-eval ]
+then
+    just_eval=yes
+    shift
+    set -- --eval "$@"
+fi
+
+if [[ $1 =~ ^(-e|-?-eval)$ || $INSIDE_EMACS ]]
+then unset ALTERNATE_EDITOR
+fi
+
+if v=$(emacsclient --version)
+then
+    v=${v##* }; v=${v%%.*}
+
+    if [ "$v" -ge 23 ]
+    then
+        if [ "$just_eval" ] ;then
+            exec emacsclient "$@"
+        elif [ -t 0 ] && [ -t 1 ] ;then
+            exec emac "$@"
+        else exec emacsclient --create-frame "$@"
+        fi
+    fi
+
+    if [ "$DISPLAY" ] && ( [ -t 0 ] || [ -t 1 ] ); then
+        exec emacsclient "$@"
+    fi
+fi
+
+exec "$ALTERNATE_EDITOR" "$@"
