@@ -1,0 +1,58 @@
+Xft.antialias: true
+Xft.dpi:       92 ! echo 'scale=5;sqrt(1920^2+1080^2)/24' | bc
+Xft.hinting:   full
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+Xft.rgba:      rgb
+
+Xcursor.theme: Neutral_Plus
+
+*background: #1C1C1C
+*foreground: #B4B4B4
+*color0:  #000000
+*color1:  #ff6565
+*color2:  #93d44f
+*color3:  #eab93d
+*color4:  #204a87
+*color5:  #ce5c00
+*color6:  #89b6e2
+*color7:  #cccccc
+*color8:  #555753
+*color9:  #ff8d8d
+*color10: #c8e7a8
+*color11: #ffc123
+*color12: #3465a4
+*color13: #f57900
+*color14: #46a4ff
+*color15: #ffffff
+
+URxvt.font:            xft:Envy Code R:size=10
+URxvt.boldFont:        xft:Envy Code R:bold:size=10
+URxvt.italicFont:      xft:Envy Code R:italic:size=10
+URvt.boldItalicFont:   xft:Envy Code R:bolditalic:size=10
+
+URxvt.cursorBlink:   true
+URxvt.cursorColor:   #FFFFFF
+URxvt.depth:         24
+URxvt.imLocale:      en_AU.UTF-8
+URxvt.inheritPixmap: true
+URxvt.keysym.M-u:    perl:mark-yank-urls:activate_mark_mode
+URxvt.matcher.button:    1
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+URxvt.perl-ext:          selection
+URxvt.perl-ext-common:   default,matcher,clipboard,mark-yank-urls
+URxvt.perl-lib:          /home/ootput/.urxvt/lib/
+URxvt.saveLines:   32874
+URxvt.scrollBar:   false
+URxvt.termName:    rxvt-unicode
+URxvt.transparent: true
+URxvt.urgentOnBell: true
+URxvt.urlLauncher: /home/ootput/bin/fx
+URxvt.visualBell:  true
+
+xpdf*antialias:      yes
+xpdf*background:     white
+xpdf*enableFreetype: yes
+xpdf*foreground:     black
+xpdf*urlCommand:     firefox %s
+xpdf*viKeys:         on
